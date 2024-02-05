@@ -1,0 +1,121 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                                       Trend.mq5 |
+//|                      Copyright 2021, Forex Robot Easy Team       |
+//|                                          https://forexroboteasy.com |
+//+------------------------------------------------------------------+
+#property copyright '2021, Forex Robot Easy Team'
+#property link      'https://forexroboteasy.com'
+#property version   '1.00'
+#property strict
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+class CTrendIndicator
+{
+private:
+   int          m_timeframes[];
+   string       m_symbols[];
+   bool         m_isInitialized;
+   
+public:
+   // Constructor
+   CTrendIndicator()
+   {
+      m_isInitialized = false;
+   }
+   
+   // Initialize the indicator with timeframes and symbols
+   void Initialize(int timeframes[], string symbols[])
+   {
+      m_timeframes = timeframes;
+      m_symbols = symbols;
+      m_isInitialized = true;
+   }
+   
+   // Check if the indicator is initialized
+   bool IsInitialized()
+   {
+      return m_isInitialized;
+   }
+   
+   // Analyze price data to identify trends
+   void AnalyzeTrends()
+   {
+      // Implementation logic for trend analysis
+      // ...
+   }
+   
+   // Compare trends across different timeframes
+   void CompareTrends()
+   {
+      // Implementation logic for trend comparison
+      // ...
+   }
+   
+   // Generate trading signals based on the identified trends
+   void GenerateSignals()
+   {
+      // Implementation logic for signal generation
+      // ...
+   }
+   
+   // Buy based on the identified trends
+   void Buy()
+   {
+      // Implementation logic for buying
+      // ...
+   }
+   
+   // Sell based on the identified trends
+   void Sell()
+   {
+      // Implementation logic for selling
+      // ...
+   }
+};
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void OnStart()
+{
+   // Initialize the Trend Indicator
+   CTrendIndicator trendIndicator;
+   int timeframes[] = {PERIOD_M1, PERIOD_M5, PERIOD_H1, PERIOD_D1};
+   string symbols[] = {'EURUSD', 'GBPUSD', 'USDJPY'};
+   trendIndicator.Initialize(timeframes, symbols);
+   
+   // Check if the indicator is initialized
+   if(!trendIndicator.IsInitialized())
+   {
+      Print('Trend Indicator failed to initialize!');
+      return;
+   }
+   
+   // Analyze trends
+   trendIndicator.AnalyzeTrends();
+   
+   // Compare trends
+   trendIndicator.CompareTrends();
+   
+   // Generate trading signals
+   trendIndicator.GenerateSignals();
+   
+   // Buy or sell based on the identified trends
+   if(trendIndicator.Buy())
+   {
+      // Buy logic
+      // ...
+   }
+   else if(trendIndicator.Sell())
+   {
+      // Sell logic
+      // ...
+   }
+   else
+   {
+      Print('No trading signal generated!');
+   }
+}
